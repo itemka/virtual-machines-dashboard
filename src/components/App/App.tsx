@@ -4,6 +4,7 @@ import { dashboardValueSelector } from '../../redux/dashboard/selectors.ts';
 import { increment } from '../../redux/dashboard/dashboardSlice.ts';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { SimpleLineChart } from '../SimpleLineChart/SimpleLineChart.tsx';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,11 +30,12 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <>
+            <div>
               <h1>Virtual machines dashboard</h1>
               <p>{value}</p>
               <button onClick={handleClick}>Increment value</button>
-            </>
+              <SimpleLineChart />
+            </div>
           }
         />
         <Route path="*" element={<>Not found</>} />
