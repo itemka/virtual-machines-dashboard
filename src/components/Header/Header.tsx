@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom';
 import { AppBar, Box, Toolbar } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import LogoIcon from '@/assets/logo.svg?react';
+import NotificationsIcon from '@/assets/notifications.svg?react';
 import { NavTabs } from '../NavTabs/NavTabs.tsx';
 import styles from './styles';
-import { Link } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
-import LogoIcon from '../../assets/logo.svg?react';
-import NotificationsIcon from '../../assets/notifications.svg?react';
 
 export function Header() {
   return (

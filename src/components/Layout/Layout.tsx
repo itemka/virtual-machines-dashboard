@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Container, CssBaseline } from '@mui/material';
-import styles from './styles';
 import { Header } from '../Header/Header.tsx';
+import styles from './styles';
 
 interface LayoutProps {
   children: ReactNode;

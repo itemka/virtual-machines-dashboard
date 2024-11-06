@@ -1,4 +1,4 @@
-import { defineStyles } from '../../theme/helpers/defineStyles.ts';
+import { defineStyles } from '@/theme/helpers/defineStyles.ts';
 
 const blockStyles = defineStyles({
   stateBlock: (theme) => ({
@@ -15,7 +15,8 @@ export default defineStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
+    rowGap: '32px',
+    columnGap: '16px',
   },
   stateBlock: (theme) => ({
     ...blockStyles.stateBlock(theme),

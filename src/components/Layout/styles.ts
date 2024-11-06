@@ -1,4 +1,4 @@
-import { defineStyles } from '../../theme/helpers/defineStyles.ts';
+import { defineStyles } from '@/theme/helpers/defineStyles.ts';
 
 export default defineStyles({
   container: (theme) => ({

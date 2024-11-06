@@ -1,8 +1,8 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
-import { Tabs, Tab, Stack, Typography } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
+import { Tabs, Tab, Stack, Typography } from '@mui/material';
+import ArrowDownIcon from '@/assets/arrowDown.svg?react';
 import styles from './styles';
-import ArrowDownIcon from '../../assets/arrowDown.svg?react';
 
 export function NavTabs() {
   const location = useLocation();
