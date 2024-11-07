@@ -3,6 +3,7 @@
 This is a React-based dashboard application for managing virtual machines.
 
 Contents:
+
 - [Technologies](#technologies)
 - [Installation](#installation)
 
@@ -31,6 +32,7 @@ Contents:
   cd virtual-machines-dashboard
   yarn install
 ```
+
 3. Start the development server:
 
 ```bash

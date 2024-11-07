@@ -4,6 +4,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   transform: {
@@ -12,4 +13,5 @@ module.exports = {
       'jest-transform-stub',
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  resolver: '<rootDir>/config/jest/jestResolver.cjs',
 };
