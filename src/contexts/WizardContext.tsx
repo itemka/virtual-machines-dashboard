@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
+import { VirtualMachineFormData } from '@/types/virtualMachine.ts';
 
 export const steps = {
   STEP_ONE: 1,
@@ -6,23 +7,16 @@ export const steps = {
   STEP_THREE: 3,
 } as const;
 
-export interface WizardFormData {
-  vmName: string;
-  cpu: number;
-  ram: number;
-  virtualizedCpu: boolean;
-}
-
 interface WizardContextType {
   step: number;
   setStep: (step: number) => void;
-  formData: WizardFormData;
-  updateFormData: (data: Partial<WizardFormData>) => void;
+  formData: VirtualMachineFormData;
+  updateFormData: (data: Partial<VirtualMachineFormData>) => void;
   nextStep: () => void;
   previousStep: () => void;
 }
 
-export const initialFormData: WizardFormData = {
+export const initialFormData: VirtualMachineFormData = {
   vmName: '',
   cpu: 0,
   ram: 0,
@@ -39,7 +33,8 @@ interface WizardProviderProps {
 
 export function WizardProvider({ children }: WizardProviderProps) {
   const [step, setStep] = useState<number>(steps.STEP_ONE);
-  const [formData, setFormData] = useState<WizardFormData>(initialFormData);
+  const [formData, setFormData] =
+    useState<VirtualMachineFormData>(initialFormData);
 
   const nextStep = () => {
     setStep((prevStep) => Math.min(prevStep + 1, steps.STEP_THREE));
@@ -49,7 +44,7 @@ export function WizardProvider({ children }: WizardProviderProps) {
     setStep((prevStep) => Math.max(prevStep - 1, steps.STEP_ONE));
   };
 
-  const updateFormData = (data: Partial<WizardFormData>) => {
+  const updateFormData = (data: Partial<VirtualMachineFormData>) => {
     setFormData((prev) => ({ ...prev, ...data }));
   };
 

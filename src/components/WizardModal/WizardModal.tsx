@@ -12,12 +12,11 @@ import { Sidebar } from './components/Sidebar/Sidebar.tsx';
 import { StepsButtons } from './components/StepsButtons/StepsButtons.tsx';
 import { validationSchema } from '@/components/WizardModal/constants.ts';
 import CloseIcon from '@/assets/closeModalIcon.svg?react';
-import {
-  WizardFormData,
-  initialFormData,
-  steps,
-} from '@/contexts/WizardContext.tsx';
+import { initialFormData, steps } from '@/contexts/WizardContext.tsx';
 import { ReadyToComplete } from './components/steps/ReadyToComplete/ReadyToComplete.tsx';
+import { VirtualMachineFormData } from '@/types/virtualMachine.ts';
+import { useAppDispatch } from '@/hooks/storeHooks.ts';
+import { addVirtualMachine } from '@/redux/virtualMachines/virtualMachinesSlice.ts';
 import styles from './styles.ts';
 
 interface WizardModalProps {
@@ -26,11 +25,12 @@ interface WizardModalProps {
 }
 
 export type FormikPropsWithoutHandleSubmit = Omit<
-  FormikProps<WizardFormData>,
+  FormikProps<VirtualMachineFormData>,
   'handleSubmit'
 >;
 
 export function WizardModal({ open, onClose }: WizardModalProps) {
+  const dispatch = useAppDispatch();
   const { step, setStep, nextStep, formData, updateFormData } =
     useWizardContext();
 
@@ -64,6 +64,7 @@ export function WizardModal({ open, onClose }: WizardModalProps) {
     onClose();
     setStep(steps.STEP_ONE);
     updateFormData(initialFormData);
+    dispatch(addVirtualMachine(formData));
   };
 
   const confirmCancel = () => {

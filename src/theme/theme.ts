@@ -32,6 +32,7 @@ export const theme = createTheme({
     },
     errorExtended: {
       container: '#FFECEA',
+      negative: '#DC3545',
     },
     headline: {
       small: '#333',
@@ -44,6 +45,7 @@ export const theme = createTheme({
     },
     green: {
       main: '#66BB6A',
+      positive: '#1A8754',
     },
     yellow: {
       main: '#FFEB3B',
@@ -128,6 +130,7 @@ declare module '@mui/material/styles' {
     };
     errorExtended?: {
       container: string;
+      negative: string;
     };
     headline?: {
       small: string;
@@ -137,6 +140,7 @@ declare module '@mui/material/styles' {
     };
     green?: {
       main: string;
+      positive: string;
     };
     yellow?: {
       main: string;
@@ -160,6 +164,7 @@ declare module '@mui/material/styles' {
     };
     errorExtended?: {
       container: string;
+      negative: string;
     };
     headline?: {
       small: string;
@@ -169,6 +174,7 @@ declare module '@mui/material/styles' {
     };
     green?: {
       main: string;
+      positive: string;
     };
     yellow?: {
       main: string;

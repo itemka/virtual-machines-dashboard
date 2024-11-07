@@ -16,20 +16,23 @@ export function RamSliderWithIndicator({ value }: RamSliderWithIndicatorProps) {
   const [sliderOffset, setSliderOffset] = useState({
     left: 0,
     top: 0,
-    width: 0,
   });
 
   const ramValue = value || 0;
   const positionPercentage = Math.max(0, Math.min((ramValue / 50) * 100, 100));
-  const indicatorLeftAbsolutePosition =
-    sliderOffset.left + (sliderOffset.width * positionPercentage) / 100;
 
   useEffect(() => {
     const updateSliderOffsetAndWidth = () => {
       if (sliderRef.current) {
-        const { left, top, width } = sliderRef.current.getBoundingClientRect();
+        const sliderRect = sliderRef.current.getBoundingClientRect();
+        const topPosition = sliderRect.top - 10 + window.scrollY;
+        const leftPosition =
+          sliderRect.left + (sliderRect.width * positionPercentage) / 100;
 
-        setSliderOffset({ left, top, width });
+        setSliderOffset({
+          top: topPosition,
+          left: leftPosition,
+        });
       }
     };
 
@@ -39,18 +42,19 @@ export function RamSliderWithIndicator({ value }: RamSliderWithIndicatorProps) {
     return () => {
       window.removeEventListener('resize', updateSliderOffsetAndWidth);
     };
-  }, []);
+  }, [positionPercentage]);
 
   return (
     <>
-      {ramValue > 0 &&
+      {sliderRef.current &&
+        ramValue > 0 &&
         ramValue <= 50 &&
         createPortal(
           // render the indicator outside of the slider container
           <Box
             sx={styles.indicatorContainer(theme)({
-              sliderTopOffset: sliderOffset.top - 10,
-              sliderLetOffset: indicatorLeftAbsolutePosition,
+              sliderTopOffset: sliderOffset.top,
+              sliderLetOffset: sliderOffset.left,
             })}
           >
             <Box sx={styles.purpleMarkerContainer}>

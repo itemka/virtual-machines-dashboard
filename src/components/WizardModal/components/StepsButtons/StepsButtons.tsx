@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Box, Button } from '@mui/material';
 import { useWizardContext } from '@/hooks/useWizardContext.ts';
-import { WizardFormData, steps } from '@/contexts/WizardContext.tsx';
+import { steps } from '@/contexts/WizardContext.tsx';
 import { FormikPropsWithoutHandleSubmit } from '@/components/WizardModal/WizardModal.tsx';
+import { VirtualMachineFormData } from '@/types/virtualMachine.ts';
 import styles from './styles.ts';
 
 interface StepsButtonsProps {
@@ -16,7 +17,7 @@ export function StepsButtons({ onFinish, formikProps }: StepsButtonsProps) {
 
   useEffect(() => {
     const validateStep = async () => {
-      let fieldsToValidate: Array<keyof WizardFormData> = [];
+      let fieldsToValidate: Array<keyof VirtualMachineFormData> = [];
 
       switch (step) {
         case steps.STEP_ONE:
