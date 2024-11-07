@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dashboardReducer from './dashboard/dashboardSlice.ts';
+import virtualMachinesReducer from '@/redux/virtualMachines/virtualMachinesSlice.ts';
 
 export const store = configureStore({
   reducer: {
-    dashboard: dashboardReducer,
+    virtualMachines: virtualMachinesReducer,
   },
 });
 
