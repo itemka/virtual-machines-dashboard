@@ -43,7 +43,7 @@ export function StepsButtons({ onFinish, formikProps }: StepsButtonsProps) {
 
   return (
     <Box sx={styles.container}>
-      {step > 1 && (
+      {step > steps.STEP_ONE && (
         <Button
           variant="contained"
           onClick={previousStep}
@@ -53,7 +53,7 @@ export function StepsButtons({ onFinish, formikProps }: StepsButtonsProps) {
         </Button>
       )}
 
-      {step < 3 && (
+      {step < steps.STEP_THREE && (
         <Button
           variant="contained"
           onClick={nextStep}
@@ -64,7 +64,7 @@ export function StepsButtons({ onFinish, formikProps }: StepsButtonsProps) {
         </Button>
       )}
 
-      {step === 3 && (
+      {step === steps.STEP_THREE && (
         <Button
           variant="contained"
           color="primary"
