@@ -11,7 +11,7 @@ export const fetchVirtualMachines = createAsyncThunk<
   fetchVirtualMachinesResponse,
   undefined
 >(
-  'alertManagement/fetchCustomAlerts',
+  'virtualMachines/fetchVirtualMachines',
   async (_payload, { rejectWithValue }) => {
     try {
       await delay(800);
